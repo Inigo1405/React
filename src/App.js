@@ -1,15 +1,15 @@
+import React, { useState } from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 
+import Header from './components/header';
+import { Alumnos } from './components/alumnos';
+
+
+
 let sesion = true;
-const amigos = ['Vinny', 'Pingul', 'Nao', 'Fredos', 'Sabine'];
-
-
-function Header({title, color}){
-  console.log(title)
-  return <h1 style={{color: color}}> {title ? title : "No hay nada"} JSX </h1>
-}
-
+const amigos = ['Vinny', 'Pingul', 'Nao', 'Fredos', 'Alexis', 'Sabine', 'Xime'];
 
 function App() {
   return (
@@ -23,15 +23,11 @@ function App() {
 
       </header>
 
-      {sesion === true ? 
+      {
+        sesion === true ? 
         <>
-        <Header title="Bienvenidos" />
-        <Amigos />
-        {/* <ul>
-          {amigos.map((amigo, index) => {
-            return <li key={index}>{amigo}</li>
-          })}
-        </ul> */}
+          <Header title="Bienvenidos" />
+          <Alumnos alumnos={amigos}/>
         </>
         :
         <p>No has iniciado sesion...</p>
@@ -40,21 +36,5 @@ function App() {
     </div>
   );
 }
-
-
-function Amigos (){
-  return (
-    amigos.map((amigo, index) => {
-      return Amigo(amigo, index)
-    })
-  )
-}
-
-function Amigo (amigo, index){
-  return <p>{index}.- {amigo} </p>
-}
-// Crear el componente 
-// amigos
-// amigo  
 
 export default App;
