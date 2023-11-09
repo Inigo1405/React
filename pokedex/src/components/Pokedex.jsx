@@ -11,7 +11,7 @@ export const Pokedex = () => {
         axios.get(url).then((response) => {
             setPokemon(response.data.results)
             // console.log(pokemons)
-            console.log(response)
+            // console.log(response)
         })
     }, [setPokemon])
 
@@ -23,8 +23,5 @@ export const Pokedex = () => {
                 })
             }
         </div>
-        // <>
-        //     <div>{pokemon}</div>
-        // </>
     )
 }
