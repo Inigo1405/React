@@ -15,7 +15,7 @@
   filter: drop-shadow(0 0 2em #eb1616aa);
 }
 .logo.pokemon:hover {
-  height: 8em;
+  height: 9em;
   filter: drop-shadow(0 0 2em #ffffffaa);
 }
 .logo.react:hover {
@@ -38,7 +38,8 @@
 }
 
 .card {
-  padding: 2em;
+  /* padding: 2em; */
+  width: 90vw;
 }
 
 .read-the-docs {

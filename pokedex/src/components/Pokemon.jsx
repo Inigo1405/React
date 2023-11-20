@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 
-export const Pokemon = ({pokemon}) => {
-  const [poke, setPoke] = useState([])
+export const Pokemon = ({pokemon, select}) => {
+  // console.log(pokemon)
 
-  useEffect(() => {
-    axios.get(pokemon.url).then((response) => {
-      setPoke(response.data)
-      // console.log(response.data)
-    })
-  }, [setPoke])
+  const selectPokemon = () => {
+    select(pokemon)
+  }
 
-  console.log(poke.sprites)
-  let sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke.id}.png`
-
-  return (
+  return ( 
     <>
-      <h3>{pokemon.name}</h3>
-      <img src={sprite} className="logo pokemon" alt={poke.name} />
+      <div>
+        <h3>{pokemon.name} #{pokemon.id}</h3>
+        <img src={pokemon.sprites.front_default} alt="" />
+        {/* <img src={pokemon.sprites.front_shiny} alt="" /> */}
+        <br />
+
+        <button onClick={selectPokemon}>Add Pokemon</button>
+      </div>
     </>
   )
 }
