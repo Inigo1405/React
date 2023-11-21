@@ -17,7 +17,6 @@ export const Pokedex = () => {
 
     // Referencia de la Firebase 
     function writePokeTeam() {
-
         const docData = team.reduce((result, poke, index) => {
             result[`poke${index + 1}`] = {
               name: poke.name,
@@ -66,10 +65,12 @@ export const Pokedex = () => {
     }, [])
 
 
+    // Botones
     const onClick = (e) => {
         if(e.target.name === 'delet'){
             setTeam([])
         }
+        // Mandar datos
         else if(e.target.name === 'save'){
             console.log('Save Team!')
             writePokeTeam()
@@ -101,50 +102,50 @@ export const Pokedex = () => {
     return(
         <>
             <div>
-                <h2>Page {page}</h2>
-                {
-                    page != 1 && <button onClick={() => {setPage(page-1)}}>Back</button>
-                }
-                
-                <button onClick={() => {setPage(page+1)}}>Next</button>
-            </div>
+                <div>
+                    <h2>Page {page}</h2>
+                    {
+                        page != 1 && <button onClick={() => {setPage(page-1)}}>Back</button>
+                    }
+                    
+                    <button onClick={() => {setPage(page+1)}}>Next</button>
+                </div>
 
-            <div>
                 <div className="wrapper">
-                    {
-                        pokemons.map((pokemon) => {
-                            return <Pokemon key={pokemon.name} pokemon={pokemon} select={selectPokemon} />
-                        })
-                    }
-                </div>
+                    <div className="pokedex">
+                        {
+                            pokemons.map((pokemon) => {
+                                return <Pokemon key={pokemon.name} pokemon={pokemon} select={selectPokemon} />
+                            })
+                        }
+                    </div>
 
-                <hr />
-
-                <h2>Team: </h2>
-                <div className="wrapperTeam">
-                    {
-                        team.map((poke) => {
-                            if(poke != undefined){
-                                console.log(poke)
-                                return (
-                                    <>
-                                        <div>
-                                            <p>{poke.name}</p>
+                    <div className="team">
+                        <h2>Team: </h2>
+                        {
+                            team.map((poke) => {
+                                if(poke != undefined){
+                                    console.log(poke)
+                                    return (
+                                        <>
                                             <img src={poke.sprite}/>
-                                        </div>
-                                    </>
-                                )
-                            }
-                        })
-                    }
-                    <br />
+                                            <p>{poke.name}</p>
+                                        </>
+                                    )
+                                }
+                            })
+                        }
+
+                        <br />
+
+                        {
+                            team.length == 6 
+                            ? 
+                            <button name="save" onClick={onClick}>Save Team</button> : <></>    
+                        }
+                        <button name="delet" onClick={onClick}>Delete Team</button>
+                    </div>
                 </div>
-                    {
-                        team.length == 6 
-                        ? 
-                        <button name="save" onClick={onClick}>Save Team</button> : <></>    
-                    }
-                    <button name="delet" onClick={onClick}>Delete Team</button>
             </div>
         </>
     )
