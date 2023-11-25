@@ -25,7 +25,15 @@ export const Pokedex = () => {
             return result;
         }, {});
           
+        const docUser = {
+            user1: {
+                name: 'Pingul',
+                password: 'password123'
+            }
+        }
+
         setDoc(doc(firestore, 'Teams/principal'), docData)
+        setDoc(doc(firestore, 'Users/admin'), docUser)
     }
     
     
